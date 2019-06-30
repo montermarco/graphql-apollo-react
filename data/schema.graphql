@@ -1,0 +1,55 @@
+type Customer {
+    id: ID
+    name: String
+    lastName: String
+    company: String
+    emails: [Email]
+    age: Int
+    type: CustomerType
+    orders: [Order]
+}
+type Order {
+    product: String
+    price: String
+}
+type Email {
+    email: String
+}
+
+enum CustomerType {
+    BASIC
+    PRO
+}
+""" Queries to get customers and stuff """
+type Query {
+    getCustomers(limit: Int) : [Customer]
+    getCustomer(id: ID) : Customer
+}
+
+input OrderInput {
+    product: String
+    price: Int
+}
+
+input EmailInput {
+    email: String
+}
+""" Fields to create new customers """
+input CustomerInput {
+    id: ID
+    name: String!
+    lastName: String!
+    company: String!
+    emails: [EmailInput]
+    age: Int
+    type: CustomerType
+    orders: [OrderInput]
+
+}
+""" Mutation to create new customers """
+type Mutation {
+    """ Resolver name, Input with data and the returned value """
+    createCustomer(input: CustomerInput) : Customer
+    updateCustomer(input: CustomerInput) : Customer
+    deleteCustomer( id: ID ) : String
+}
