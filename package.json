@@ -9,7 +9,7 @@
   "author": "Mmonter",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-graphql": "^0.8.0",
     "graphql": "^14.4.0",
     "graphql-import": "^0.7.1",
